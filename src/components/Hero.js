@@ -1,141 +1,158 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
 import { FaLinkedin } from "react-icons/fa";
+
 import profile from "../assets/profile.jpg";
 
+import cover1 from "../assets/cover1.jpg";
+import cover2 from "../assets/cover2.jpg";
+import cover3 from "../assets/cover3.jpg";
+
 function Hero() {
+  const slides = [
+    {
+      image: cover1,
+      link: "/catalogue/neurorehabilitation",
+    },
+    {
+      image: cover2,
+      link: "/catalogue/musculoskeletal",
+    },
+    {
+      image: cover3,
+      link: "/catalogue/respiratory-care",
+    },
+  ];
 
-  // Mouse movement interaction
-  const handleMouseMove = (e) => {
-    const x = (window.innerWidth / 2 - e.clientX) / 30;
-    const y = (window.innerHeight / 2 - e.clientY) / 30;
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-    const element = document.getElementById("hero-content");
-    if (element) {
-      element.style.transform = `translate(${x}px, ${y}px)`;
-    }
-  };
+  // Auto slideshow
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) =>
+        prev === slides.length - 1 ? 0 : prev + 1
+      );
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [slides.length]);
 
   return (
     <section
-      onMouseMove={handleMouseMove}
-      className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-800"
+      id="hero"
+      className="relative bg-gray-950 text-white pb-16"
     >
+      {/* =========================
+          TOP COVER SLIDESHOW
+      ========================== */}
+      <div className="relative h-[320px] md:h-[420px] overflow-hidden">
+        {slides.map((slide, index) => (
+          <a
+            key={index}
+            href={slide.link}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              currentSlide === index ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <img
+              src={slide.image}
+              alt="cover"
+              className="w-full h-full object-cover"
+            />
+          </a>
+        ))}
 
-      {/* Glow Effects */}
-      <div className="absolute w-72 h-72 bg-cyan-500 rounded-full blur-3xl opacity-20 top-10 left-10 animate-pulse"></div>
-      <div className="absolute w-72 h-72 bg-blue-500 rounded-full blur-3xl opacity-20 bottom-10 right-10 animate-pulse"></div>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/50"></div>
 
-      {/* Content */}
-      <div
-        id="hero-content"
-        className="text-center text-white px-4 transition-transform duration-200"
-      >
+        {/* OPTIONAL:
+            Carousel buttons removed completely
+        */}
+      </div>
 
-        {/* Profile Image */}
-        <motion.img
-          src={profile}
-          alt="Clyde Patrick Onyango Omollo"
-          className="w-36 h-36 mx-auto rounded-full border-4 border-cyan-500 shadow-lg object-cover"
-          whileHover={{ scale: 1.08, rotate: 2 }}
-          transition={{ type: "spring", stiffness: 200 }}
-        />
-
-        {/* Name */}
-        <motion.h1
-          initial={{ opacity: 0, y: -40 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-4xl md:text-6xl font-bold mt-6"
-        >
-          Clyde Patrick Onyango Omollo
-        </motion.h1>
-
-        {/* Qualification */}
-        <p className="mt-3 text-lg md:text-xl text-gray-300 font-medium">
-          Bachelor of Science in Physical Therapy (BSc PT)
-        </p>
-
-        {/* Roles */}
-        <h2 className="mt-5 text-xl md:text-3xl font-semibold text-cyan-400">
-          <Typewriter
-            words={[
-              "Neurorehabilitation",
-              "Musculoskeletal Rehabilitation",
-              "Respiratory Care",
-              "Pediatric Rehabilitation",
-              "Cardiopulmonary Rehabilitation",
-            ]}
-            loop
-            cursor
-            cursorStyle="|"
-            typeSpeed={70}
-            deleteSpeed={40}
-            delaySpeed={2000}
+      {/* =========================
+          PROFILE SECTION
+      ========================== */}
+      <div className="relative z-10 max-w-5xl mx-auto px-6">
+        <div className="-mt-24 md:-mt-28 text-center">
+          {/* Profile Image */}
+          <motion.img
+            src={profile}
+            alt="Clyde Patrick Onyango Omollo"
+            className="w-40 h-40 md:w-48 md:h-48 mx-auto rounded-full border-4 border-cyan-400 shadow-2xl object-cover bg-white"
+            whileHover={{ scale: 1.05 }}
           />
-        </h2>
 
-        {/* Description */}
-        <p className="mt-6 max-w-3xl mx-auto text-gray-300 leading-relaxed">
-          Dedicated and motivated Physical Therapist with hands-on clinical
-          experience in neurorehabilitation, musculoskeletal rehabilitation,
-          respiratory care, orthopedic manual therapy, exercise therapy, and
-          inpatient/outpatient physiotherapy services. Passionate about
-          evidence-based rehabilitation, patient-centered care, and improving
-          functional independence and quality of life.
-        </p>
-
-        {/* Social Icons */}
-        <div className="flex justify-center gap-6 mt-6 text-2xl">
-          <a
-            href="https://linkedin.com/"
-            target="_blank"
-            rel="noreferrer"
+          {/* Name */}
+          <motion.h1
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-4xl md:text-6xl font-bold mt-6"
           >
-            <FaLinkedin className="hover:text-cyan-400 transition" />
-          </a>
-        </div>
+            Clyde Patrick Onyango Omollo
+          </motion.h1>
 
-        {/* Buttons */}
-        <div className="mt-8 flex justify-center gap-4 flex-wrap">
-          <a
-            href="#projects"
-            className="bg-cyan-600 px-6 py-3 rounded-lg hover:bg-cyan-700 transition"
-          >
-            View Projects
-          </a>
+          {/* Qualification */}
+          <p className="mt-3 text-lg md:text-xl text-gray-300 font-medium">
+            Bachelor of Science in Physical Therapy (BSc PT)
+          </p>
 
-          <a
-            href="#contact"
-            className="border border-white px-6 py-3 rounded-lg hover:bg-white hover:text-black transition"
-          >
-            Contact Me
-          </a>
-        </div>
+          {/* Roles */}
+          <h2 className="mt-5 text-xl md:text-3xl font-semibold text-cyan-400">
+            <Typewriter
+              words={[
+                "Neurorehabilitation",
+                "Musculoskeletal Rehabilitation",
+                "Respiratory Care",
+                "Pediatric Rehabilitation",
+                "Cardiopulmonary Rehabilitation",
+              ]}
+              loop
+              cursor
+              cursorStyle="|"
+              typeSpeed={70}
+              deleteSpeed={40}
+              delaySpeed={2000}
+            />
+          </h2>
 
-        {/* Stats */}
-        <div className="mt-12 grid grid-cols-3 gap-8 text-center">
-          <div>
-            <h3 className="text-3xl font-bold text-cyan-400">3+</h3>
-            <p className="text-sm text-gray-300">Years Clinical Experience</p>
+          {/* Description */}
+          <p className="mt-6 max-w-3xl mx-auto text-gray-300 leading-relaxed">
+            Dedicated and motivated Physical Therapist with hands-on clinical
+            experience in neurorehabilitation, musculoskeletal rehabilitation,
+            respiratory care, orthopedic manual therapy, exercise therapy, and
+            inpatient/outpatient physiotherapy services.
+          </p>
+
+          {/* Buttons */}
+          <div className="mt-8 flex justify-center gap-4 flex-wrap">
+            <a
+              href="/catalogue"
+              className="bg-cyan-500 px-6 py-3 rounded-lg hover:bg-cyan-600 transition"
+            >
+              Explore Services
+            </a>
+
+            <a
+              href="#contact"
+              className="border border-white px-6 py-3 rounded-lg hover:bg-white hover:text-black transition"
+            >
+              Contact Me
+            </a>
           </div>
 
-          <div>
-            <h3 className="text-3xl font-bold text-cyan-400">10+</h3>
-            <p className="text-sm text-gray-300">Specialized Skills</p>
-          </div>
-
-          <div>
-            <h3 className="text-3xl font-bold text-cyan-400">2+</h3>
-            <p className="text-sm text-gray-300">Leadership Roles</p>
+          {/* Social */}
+          <div className="flex justify-center gap-6 mt-8 text-2xl">
+            <a
+              href="https://linkedin.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaLinkedin className="hover:text-cyan-400 transition" />
+            </a>
           </div>
         </div>
-
-        {/* Scroll Indicator */}
-        <div className="mt-10 animate-bounce text-2xl opacity-70">
-          ↓
-        </div>
-
       </div>
     </section>
   );
