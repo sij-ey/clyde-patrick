@@ -145,7 +145,7 @@ function Hero() {
           {/* Social */}
           <div className="flex justify-center gap-6 mt-8 text-2xl">
             <a
-              href="https://linkedin.com/"
+              href="https://www.linkedin.com/in/clyde-omollo-7a71411b6"
               target="_blank"
               rel="noreferrer"
             >
