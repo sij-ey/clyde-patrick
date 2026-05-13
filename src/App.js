@@ -7,6 +7,7 @@ import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Services from "./components/Services";
+import LeadershipTraining from "./components/LeadershipTraining";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <About />
       <Services />
       <Experience />
+      <LeadershipTraining />
       <Projects />
       <Skills />
       <Contact />
