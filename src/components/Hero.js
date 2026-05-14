@@ -2,28 +2,39 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
 import { FaLinkedin } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 import profile from "../assets/profile.jpg";
 
 import cover1 from "../assets/cover1.jpg";
 import cover2 from "../assets/cover2.jpg";
 import cover3 from "../assets/cover3.jpg";
+import cover4 from "../assets/cover4.jpg";
+import cover5 from "../assets/cover5.jpg";
+import cover6 from "../assets/cover6.jpg";
+import cover7 from "../assets/cover7.jpg";
+import cover8 from "../assets/cover8.jpg";
+import cover9 from "../assets/cover9.jpg";
+import cover10 from "../assets/cover10.jpg";
+import cover11 from "../assets/cover11.jpg";
+import cover12 from "../assets/cover12.jpg";
+
 
 function Hero() {
   const slides = [
-    {
-      image: cover1,
-      link: "/catalogue/neurorehabilitation",
-    },
-    {
-      image: cover2,
-      link: "/catalogue/musculoskeletal",
-    },
-    {
-      image: cover3,
-      link: "/catalogue/respiratory-care",
-    },
-  ];
+  cover1,
+  cover2,
+  cover3,
+  cover4,
+  cover5,
+  cover6,
+  cover7,
+  cover8,
+  cover9,
+  cover10,
+  cover11,
+  cover12,
+];
 
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -43,33 +54,61 @@ function Hero() {
       id="hero"
       className="relative bg-gray-950 text-white pb-16"
     >
-      {/* =========================
-          TOP COVER SLIDESHOW
+     {/* =========================
+         TOP COVER SLIDESHOW
       ========================== */}
-      <div className="relative h-[320px] md:h-[420px] overflow-hidden">
-        {slides.map((slide, index) => (
-          <a
-            key={index}
-            href={slide.link}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              currentSlide === index ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <img
-              src={slide.image}
-              alt="cover"
-              className="w-full h-full object-cover"
-            />
-          </a>
-        ))}
+        <Link
+          to ="/gallery"
+          className="relative block h-[320px] md:h-[500px] overflow-hidden group"
+        >
+          {slides.map((slide, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-1000 ${
+                currentSlide === index ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <div className="relative w-full h-full overflow-hidden">
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/50"></div>
+                {/* Blurred Background */}
+                <img
+                  src={slide}
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-cover blur-3xl scale-110 opacity-50"
+                />
 
-        {/* OPTIONAL:
-            Carousel buttons removed completely
-        */}
-      </div>
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/0 to-black/60"></div>
+
+                {/* Extra Dark Overlay */}
+                <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
+
+                {/* Main Image */}
+                <img
+                  src={slide}
+                  alt={`slide-${index}`}
+                  className="relative z-10 w-full h-full object-contain scale-100 group-hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+            </div>
+          ))}
+
+          {/* LIGHT OVERLAY */}
+          <div className="absolute inset-0 bg-black/25"></div>
+
+          {/* TEXT ON SLIDESHOW */}
+          {/* <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-center px-4">
+              <h1 className="text-3xl md:text-5xl font-bold text-white drop-shadow-lg">
+                Physiotherapy Gallery
+              </h1>
+
+              <p className="mt-3 text-gray-200 text-lg">
+                Click to explore all rehabilitation photos
+              </p>
+            </div>
+          </div> */}
+        </Link>
 
       {/* =========================
           PROFILE SECTION
@@ -128,7 +167,7 @@ function Hero() {
           {/* Buttons */}
           <div className="mt-8 flex justify-center gap-4 flex-wrap">
             <a
-              href="/catalogue"
+              href="#services"
               className="bg-cyan-500 px-6 py-3 rounded-lg hover:bg-cyan-600 transition"
             >
               Explore Services
