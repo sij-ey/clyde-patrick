@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function LeadershipTraining() {
+  const navigate = useNavigate();
+
   return (
     <section
       id="leadership-training"
@@ -88,7 +91,10 @@ function LeadershipTraining() {
         </div>
 
         {/* Dry Needling */}
-        <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border-l-4 border-cyan-500">
+        <div
+          onClick={() => navigate("/dry-needling")}
+          className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border-l-4 border-cyan-500 cursor-pointer hover:scale-105 transition duration-300"
+        >
           <h3 className="text-2xl font-bold">
             Dry Needling Training
           </h3>
@@ -154,7 +160,10 @@ function LeadershipTraining() {
         </div>
 
         {/* DMD & SMA */}
-        <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border-l-4 border-cyan-500">
+        <div
+          onClick={() => navigate("/dmd-sma")}
+          className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border-l-4 border-cyan-500 cursor-pointer hover:scale-105 transition duration-300"
+        >
           <h3 className="text-2xl font-bold">
             Standards of Care in DMD & SMA
           </h3>
