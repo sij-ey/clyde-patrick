@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { FaImages } from "react-icons/fa";
 
 function LeadershipTraining() {
   const navigate = useNavigate();
@@ -30,30 +31,15 @@ function LeadershipTraining() {
             Key Contact – WCPT Future Network Kenya
           </h3>
 
-          <p className="text-cyan-500 font-medium mt-1">
-            2022
-          </p>
+          <p className="text-cyan-500 font-medium mt-1">2022</p>
 
-          <h4 className="mt-6 font-semibold text-lg">
-            Professional Engagement
-          </h4>
+          <h4 className="mt-6 font-semibold text-lg">Professional Engagement</h4>
 
           <ul className="list-disc ml-6 mt-3 space-y-2 text-gray-700 dark:text-gray-300">
-            <li>
-              Served as a key contact representative for WCPT Future Network Kenya
-            </li>
-
-            <li>
-              Participated in professional networking and physiotherapy advocacy initiatives
-            </li>
-
-            <li>
-              Supported student and professional engagement activities within the physiotherapy community
-            </li>
-
-            <li>
-              Promoted collaboration and professional development opportunities
-            </li>
+            <li>Served as a key contact representative for WCPT Future Network Kenya</li>
+            <li>Participated in professional networking and physiotherapy advocacy initiatives</li>
+            <li>Supported student and professional engagement activities within the physiotherapy community</li>
+            <li>Promoted collaboration and professional development opportunities</li>
           </ul>
         </div>
 
@@ -63,67 +49,52 @@ function LeadershipTraining() {
             Peer Review Training – Management of Low Back Pain
           </h3>
 
-          <p className="text-cyan-500 font-medium mt-1">
-            2024
-          </p>
+          <p className="text-cyan-500 font-medium mt-1">2024</p>
 
-          <h4 className="mt-6 font-semibold text-lg">
-            Key Learning Areas
-          </h4>
+          <h4 className="mt-6 font-semibold text-lg">Key Learning Areas</h4>
 
           <ul className="list-disc ml-6 mt-3 space-y-2 text-gray-700 dark:text-gray-300">
-            <li>
-              Participated in peer review activities and professional discussions
-            </li>
-
-            <li>
-              Enhanced understanding of evidence-based low back pain management
-            </li>
-
-            <li>
-              Improved clinical reasoning and rehabilitation planning skills
-            </li>
-
-            <li>
-              Strengthened knowledge of musculoskeletal physiotherapy best practice guidelines
-            </li>
+            <li>Participated in peer review activities and professional discussions</li>
+            <li>Enhanced understanding of evidence-based low back pain management</li>
+            <li>Improved clinical reasoning and rehabilitation planning skills</li>
+            <li>Strengthened knowledge of musculoskeletal physiotherapy best practice guidelines</li>
           </ul>
         </div>
 
-        {/* Dry Needling */}
+        {/* Dry Needling (CLICKABLE) */}
         <div
           onClick={() => navigate("/dry-needling")}
-          className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border-l-4 border-cyan-500 cursor-pointer hover:scale-105 transition duration-300"
+          className="group bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border-l-4 border-cyan-500 cursor-pointer hover:scale-[1.03] hover:shadow-2xl transition duration-300 relative"
         >
-          <h3 className="text-2xl font-bold">
+          {/* Top-right indicator */}
+          <div className="absolute top-4 right-4 flex items-center gap-2 text-cyan-500 text-sm opacity-80 group-hover:opacity-100 transition">
+            <FaImages size={16} />
+            <span>View</span>
+          </div>
+
+          <h3 className="text-2xl font-bold flex items-center gap-2">
             Dry Needling Training
+            <span className="text-cyan-500 text-sm opacity-70 group-hover:opacity-100 transition">
+              ➜
+            </span>
           </h3>
 
           <p className="text-cyan-500 font-medium mt-1">
             International Academy of Orthopedic Medicine
           </p>
 
-          <h4 className="mt-6 font-semibold text-lg">
-            Skills Acquired
-          </h4>
+          <h4 className="mt-6 font-semibold text-lg">Skills Acquired</h4>
 
           <ul className="list-disc ml-6 mt-3 space-y-2 text-gray-700 dark:text-gray-300">
-            <li>
-              Completed training in dry needling techniques for musculoskeletal pain management
-            </li>
-
-            <li>
-              Acquired practical skills in trigger point management
-            </li>
-
-            <li>
-              Enhanced understanding of pain modulation approaches
-            </li>
-
-            <li>
-              Strengthened evidence-based orthopedic rehabilitation skills
-            </li>
+            <li>Completed training in dry needling techniques for musculoskeletal pain management</li>
+            <li>Acquired practical skills in trigger point management</li>
+            <li>Enhanced understanding of pain modulation approaches</li>
+            <li>Strengthened evidence-based orthopedic rehabilitation skills</li>
           </ul>
+
+          <p className="mt-4 text-sm text-cyan-500 opacity-70 group-hover:opacity-100">
+            Click to view images and details
+          </p>
         </div>
 
         {/* Pediatric Epilepsy Training */}
@@ -136,36 +107,32 @@ function LeadershipTraining() {
             British Paediatric Neurology Association (BPNA)
           </p>
 
-          <h4 className="mt-6 font-semibold text-lg">
-            Training Focus
-          </h4>
+          <h4 className="mt-6 font-semibold text-lg">Training Focus</h4>
 
           <ul className="list-disc ml-6 mt-3 space-y-2 text-gray-700 dark:text-gray-300">
-            <li>
-              Completed training in pediatric epilepsy management and care
-            </li>
-
-            <li>
-              Acquired knowledge in seizure recognition and assessment
-            </li>
-
-            <li>
-              Enhanced understanding of multidisciplinary pediatric neurological care
-            </li>
-
-            <li>
-              Strengthened rehabilitation considerations in pediatric physiotherapy
-            </li>
+            <li>Completed training in pediatric epilepsy management and care</li>
+            <li>Acquired knowledge in seizure recognition and assessment</li>
+            <li>Enhanced understanding of multidisciplinary pediatric neurological care</li>
+            <li>Strengthened rehabilitation considerations in pediatric physiotherapy</li>
           </ul>
         </div>
 
-        {/* DMD & SMA */}
+        {/* DMD & SMA (CLICKABLE) */}
         <div
           onClick={() => navigate("/dmd-sma")}
-          className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border-l-4 border-cyan-500 cursor-pointer hover:scale-105 transition duration-300"
+          className="group bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border-l-4 border-cyan-500 cursor-pointer hover:scale-[1.03] hover:shadow-2xl transition duration-300 relative"
         >
-          <h3 className="text-2xl font-bold">
+          {/* Top-right indicator */}
+          <div className="absolute top-4 right-4 flex items-center gap-2 text-cyan-500 text-sm opacity-80 group-hover:opacity-100 transition">
+            <FaImages size={16} />
+            <span>View</span>
+          </div>
+
+          <h3 className="text-2xl font-bold flex items-center gap-2">
             Standards of Care in DMD & SMA
+            <span className="text-cyan-500 text-sm opacity-70 group-hover:opacity-100 transition">
+              ➜
+            </span>
           </h3>
 
           <p className="text-cyan-500 font-medium mt-1">
@@ -177,22 +144,15 @@ function LeadershipTraining() {
           </h4>
 
           <ul className="list-disc ml-6 mt-3 space-y-2 text-gray-700 dark:text-gray-300">
-            <li>
-              Completed specialized training on standards of care for DMD and SMA patients
-            </li>
-
-            <li>
-              Acquired knowledge in respiratory management and mobility preservation
-            </li>
-
-            <li>
-              Enhanced understanding of evidence-based interventions for neuromuscular disorders
-            </li>
-
-            <li>
-              Strengthened long-term rehabilitation planning and patient-centered care skills
-            </li>
+            <li>Completed specialized training on standards of care for DMD and SMA patients</li>
+            <li>Acquired knowledge in respiratory management and mobility preservation</li>
+            <li>Enhanced understanding of evidence-based interventions for neuromuscular disorders</li>
+            <li>Strengthened long-term rehabilitation planning and patient-centered care skills</li>
           </ul>
+
+          <p className="mt-4 text-sm text-cyan-500 opacity-70 group-hover:opacity-100">
+            Click to view images and details
+          </p>
         </div>
 
       </div>
