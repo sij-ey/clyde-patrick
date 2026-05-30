@@ -174,7 +174,9 @@ function Hero() {
             </a>
 
            <a
-            onClick={() => (window.location.href = "https://wa.me/254742833299")}
+            href="https://wa.me/254742833299"
+            target="_blank"
+            rel="noreferrer"
             className="flex items-center gap-2 bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition shadow-md"
           >
             <svg

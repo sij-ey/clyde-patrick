@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 function ImageGallery({ images }) {
   const [selectedIndex, setSelectedIndex] = useState(null);
@@ -7,21 +7,21 @@ function ImageGallery({ images }) {
     setSelectedIndex(index);
   };
 
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     setSelectedIndex(null);
-  };
+  }, []);
 
-  const showPrevious = () => {
+  const showPrevious = useCallback(() => {
     setSelectedIndex((prev) =>
       prev === 0 ? images.length - 1 : prev - 1
     );
-  };
+  }, [images.length]);
 
-  const showNext = () => {
+  const showNext = useCallback(() => {
     setSelectedIndex((prev) =>
       prev === images.length - 1 ? 0 : prev + 1
     );
-  };
+  }, [images.length]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -47,7 +47,7 @@ function ImageGallery({ images }) {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [selectedIndex]);
+  }, [selectedIndex, showPrevious, showNext, closeModal]);
 
   return (
     <>
@@ -74,7 +74,6 @@ function ImageGallery({ images }) {
             className="relative max-w-6xl w-full flex items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close Button */}
             <button
               onClick={closeModal}
               className="absolute top-4 right-4 text-white text-4xl z-20 hover:text-cyan-400"
@@ -82,7 +81,6 @@ function ImageGallery({ images }) {
               &times;
             </button>
 
-            {/* Previous Button */}
             <button
               onClick={showPrevious}
               className="absolute left-4 text-white text-5xl z-20 hover:text-cyan-400 transition"
@@ -90,20 +88,14 @@ function ImageGallery({ images }) {
               &#10094;
             </button>
 
-            {/* Image */}
             <div className="flex flex-col items-center">
               <img
                 src={images[selectedIndex].src}
                 alt={images[selectedIndex].alt}
                 className="max-h-[85vh] w-auto rounded-xl shadow-2xl"
               />
-
-              {/* <p className="text-white mt-4 text-lg text-center">
-                {images[selectedIndex].alt}
-              </p> */}
             </div>
 
-            {/* Next Button */}
             <button
               onClick={showNext}
               className="absolute right-4 text-white text-5xl z-20 hover:text-cyan-400 transition"
